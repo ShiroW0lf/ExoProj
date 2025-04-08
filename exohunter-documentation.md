@@ -197,6 +197,7 @@ The data preprocessing involves several steps:
 - Getting started guidance
 
 **Simple Explanation**: A welcome page that explains what exoplanets are, how they're detected, and how to use the application.
+![image](https://github.com/user-attachments/assets/7fa640a4-eb17-47a8-b841-ef1928a9835a)
 
 ### 2. Data Exploration Section
 **Purpose**: Enables users to analyze and visualize their dataset before model training.
@@ -208,6 +209,9 @@ The data preprocessing involves several steps:
 - Data quality checks
 
 **Simple Explanation**: Helps you understand your data by showing statistics and visualizations before you start training models.
+![image](https://github.com/user-attachments/assets/8380fa6a-10cf-41a6-baf6-c7814527b0bb)
+![image](https://github.com/user-attachments/assets/af2147d8-a618-420e-a7d5-35428c23e463)
+![image](https://github.com/user-attachments/assets/9524a74d-f5e0-4061-86b1-583818f74274)
 
 ### 3. Train Model Section
 **Purpose**: Facilitates model selection, configuration, and training.
@@ -223,6 +227,8 @@ The data preprocessing involves several steps:
 - Model saving capability
 
 **Simple Explanation**: Allows you to choose and train different machine learning models with customized settings to detect exoplanets in your data.
+![image](https://github.com/user-attachments/assets/38d38c4a-6084-4170-ab72-a334a796044b)
+![image](https://github.com/user-attachments/assets/e381263a-a948-4f89-9492-b03ba67102eb)
 
 ### 4. Test Model Section
 **Purpose**: Evaluates trained models on separate test datasets.
@@ -236,6 +242,8 @@ The data preprocessing involves several steps:
 - Classification report display
 
 **Simple Explanation**: Tests how well your trained model works on new data that it hasn't seen before.
+![image](https://github.com/user-attachments/assets/6d35f238-7d19-49b8-8319-e03de73ac87c)
+![image](https://github.com/user-attachments/assets/b62b55ba-fd60-4cc9-953b-5324a3378976)
 
 ### 5. HUNT Section
 **Purpose**: Applies trained models to new stellar data to identify exoplanet candidates.
@@ -249,6 +257,9 @@ The data preprocessing involves several steps:
 - Potential transit highlighting
 
 **Simple Explanation**: This is where the exciting discovery happens! Upload new star data and let the trained model hunt for potential exoplanets.
+![image](https://github.com/user-attachments/assets/09e665e3-fdef-47db-a979-7c5fee9aca46)
+![image](https://github.com/user-attachments/assets/3ffdf4d9-7f35-4a9d-887a-94c1baa9be79)
+
 
 ### 6. About Section
 **Purpose**: Provides background information and resources.
@@ -260,6 +271,7 @@ The data preprocessing involves several steps:
 - External resources links
 
 **Simple Explanation**: Provides background information about the project, how it works, and useful resources for learning more about exoplanets.
+![image](https://github.com/user-attachments/assets/2011ef10-accc-42b0-a9cc-3bf3afa33f76)
 
 ## Core Functions
 
