@@ -13,6 +13,7 @@ from sklearn.metrics import confusion_matrix, classification_report, roc_curve, 
 from sklearn.decomposition import PCA
 from imblearn.over_sampling import SMOTE, RandomOverSampler
 from imblearn.pipeline import Pipeline as ImbPipeline
+from PIL import Image, ImageDraw
 import joblib
 import os
 import time
@@ -21,10 +22,42 @@ import base64
 
 # Set page config
 st.set_page_config(page_title="ExoHunter 🔭", page_icon="🪐", layout="wide")
+def make_circular(image):
+    width, height = image.size
+    mask = Image.new('L', (width, height), 0)
+    draw = ImageDraw.Draw(mask)
+    draw.ellipse((0, 0, width, height), fill=255)
+    result = image.copy()
+    result.putalpha(mask)
+    return result
 
-# Streamlit App
-st.title("ExoHunter 🔭 - Advanced Exoplanet Detection")
+# Custom CSS to reduce the gap
+st.markdown("""
+<style>
+    div[data-testid="column"] {
+        padding: 0px !important;
+    }
+    .title-container {
+        margin-top: -5000px !important;
+    }
+</style>
+""", unsafe_allow_html=True)
 
+# Create tighter columns (notice the column ratio)
+col1, col2 = st.columns([1, 19])  # Reduced from [1,4] to bring items closer
+
+# Circular logo
+with col1:
+    logo = Image.open("logo.png")
+    logo = logo.resize((120, 120))  # Slightly reduced size
+    circular_logo = make_circular(logo)
+    st.image(circular_logo, width=110)  # Smaller display width
+
+# Title with adjusted positioning
+with col2:
+    st.markdown('<div class="title-container">', unsafe_allow_html=True)
+    st.title("ExoHunter - Advanced Exoplanet Detection")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 # Initialize session state for tracking progress
@@ -595,6 +628,7 @@ def data_exploration(data):
 # Main App Logic
 if options == "Introduction":
     st.header("Welcome to ExoHunter 🔭")
+   
     st.write("""
     This application helps you detect exoplanets using machine learning techniques applied to stellar light curves.
     
@@ -620,7 +654,7 @@ if options == "Introduction":
     
     with col2:
         # Display the transit animation in the right column
-        st.image("transit.gif", caption="Exoplanet Transit Method", use_column_width=True)
+        st.image("transit.gif", caption="Exoplanet Transit Method", use_container_width=True)
     
     st.write("""
     ### Using This App
@@ -917,15 +951,15 @@ elif options == "HUNT":
 elif options == "About":
     st.header("About ExoHunter")
     st.write("""
-    ### Project Information
-    ExoHunter is an advanced tool for detecting exoplanets using machine learning techniques
-    applied to stellar light curve data.
+### Project Information
+ExoHunter is an advanced tool for detecting exoplanets using machine learning techniques
+applied to stellar light curve data.
     
-    ### How Exoplanets Are Detected
-    The primary method used here is the transit method, where an exoplanet passes in front of its host star
-    from our vantage point, causing a small but detectable dip in the star's brightness.
+### How Exoplanets Are Detected
+The primary method used here is the transit method, where an exoplanet passes in front of its host star
+from our vantage point, causing a small but detectable dip in the star's brightness.
              
-    ### Machine Learning Approach
+### Machine Learning Approach
 This application uses several algorithms to classify light curves:
 - **[K-Nearest Neighbors](https://scikit-learn.org/stable/modules/neighbors.html)**: Simple but effective for pattern recognition
 - **[Support Vector Machines](https://scikit-learn.org/stable/modules/svm.html)**: Powerful for binary classification tasks
@@ -940,7 +974,7 @@ This application uses several algorithms to classify light curves:
     - Feature importance analysis
     
     ### Credits
-    Developed as part of a thesis project in Astronomy and Data Science.
+    Developed as part of a thesis project in Masters of Science in Computer Science by Aswin Lohani at University of Texas Permian Basin.
     """)
     
     st.write("### Exoplanet Resources")
